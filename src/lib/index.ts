@@ -91,6 +91,7 @@ export function generateQuiz(
     console.log(
       "correctWord " + correctWord + " choices: " + choices.toString()
     );
+    choices = shuffleArray(choices, rand);
 
     quiz.push({
       choices: choices,
