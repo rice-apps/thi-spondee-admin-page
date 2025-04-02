@@ -1,6 +1,6 @@
 <script lang="ts">
     import { writable } from 'svelte/store'; // Import writable for store creation
-    import { generateQuiz, type QuizQuestion } from "$lib";
+    import { generateMaintainedQuiz, generateQuiz, type QuizQuestion } from "$lib";
     import { fade, fly } from "svelte/transition";
 
     let testCode = ''; // User input for the test code
@@ -39,11 +39,14 @@
             randomSeed = testCode.slice(3);
         } else {
             setSize = Number(testCode[0]);
-            maintainCards = testCode[2] === "1";
+            maintainCards = testCode[1] === "1";
             randomSeed = testCode.slice(2);
         }
-
-        quiz = generateQuiz(setSize, randomSeed); // Generate quiz based on input
+        if (maintainCards) {
+            quiz = generateMaintainedQuiz(setSize, randomSeed)
+        } else {
+            quiz = generateQuiz(setSize, randomSeed)
+        }
         crossedOutItems = Array(quiz.length).fill(false); // Initialize all items as not crossed out
         submitted = true; // Mark form as submitted
     }

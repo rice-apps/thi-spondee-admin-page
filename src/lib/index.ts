@@ -102,3 +102,39 @@ export function generateQuiz(
 
   return quiz;
 }
+
+/**
+ * We want a function that is able to generate a quiz where the cards remain the same
+ * but the correct answer changes
+ */
+export function generateMaintainedQuiz(
+  setSize: number,
+  seed: string = Date.now().toString()
+) {
+  // Create seeded random number generator
+  const rand = createSeededRandom(seed);
+  const numQuestions = 20;
+
+  let quiz: QuizQuestion[] = [];
+  console.log("===");
+  console.log(seed);
+  // Create a copy of words to avoid modifying original
+  let words = [...spondeeWords];
+  let choices: SpondeeCard[] = [];
+
+  // generate list of words
+  for (let i = 0; i < setSize; i++) {
+    const idx = Math.floor(rand() * words.length);
+    choices.push({ word: words.splice(idx, 1)[0] });
+  }
+
+  for (let i = 0; i < numQuestions; i++) {
+    const idx = Math.floor(rand() * setSize);
+    const correctWord = choices[idx].word;
+    quiz.push({ choices: choices, correctAnswer: correctWord });
+    console.log("correctWord " + correctWord);
+  }
+  console.log("===");
+
+  return quiz;
+}
