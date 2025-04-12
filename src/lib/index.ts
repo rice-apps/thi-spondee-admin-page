@@ -68,7 +68,7 @@ export function generateQuiz(
 ) {
   // Create seeded random number generator
   const rand = createSeededRandom(seed);
-  const numQuestions = 20;
+  const numQuestions = 100;
 
   // Create a copy of words to avoid modifying original
   const quiz: QuizQuestion[] = [];
