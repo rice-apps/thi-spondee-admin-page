@@ -102,7 +102,9 @@
         <div class="container mx-auto max-w-4xl">
             <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
                 <h1 class="text-3xl font-bold text-center text-indigo-800 mb-2">Spondee Test Items</h1>
-                <p class="text-center text-gray-600 mb-8 border-b pb-4">Click on any item to mark it as complete</p>
+                <p class="text-center text-gray-600 mb-8 border-b pb-4">This key contains 100 words, but you may stop at any time.<br>
+                For each round, read the word aloud and mark it complete once the patient responds.<br>
+                When finished, click “End Session” on the patient’s screen.</p>
 
                 <div class="space-y-4">
                     {#each quiz as quizQuestion, index}
